@@ -63,26 +63,47 @@ public class Student{
             gradeNumeric = 0.0;
         }
 
-        gradeNumeric = gradeNumeric + Double.parseDouble(gradeMap.get(studentName).toString());
-            if (gradeMap.containsKey(studentName)){
-                gradeMap.remove(studentName);
-            }
-            gradeMap.put(studentName, gradeNumeric);
+        if(gradeMap.isEmpty()){
+            gradeNumeric = gradeNumeric;
+        }
+        else {
+            gradeNumeric = gradeNumeric + Double.parseDouble(gradeMap.get(studentName).toString());
+        }
+
+
+        if (gradeMap.containsKey(studentName)){
+            gradeMap.remove(studentName);
+        }
+
+        gradeMap.put(studentName, gradeNumeric);
 
             creditNumeric = hours;
 
+        if (creditMap.isEmpty()){
+
+        }
+        else{
+            creditNumeric = creditNumeric + Integer.parseInt(creditMap.get(studentName).toString());
+        }
         if (creditMap.containsKey(studentName)){
             creditMap.remove(studentName);
 
         }
-        creditNumeric = creditNumeric + Integer.parseInt(creditMap.get(studentName).toString());
+
+        creditMap.put(studentName, creditNumeric);
 
     }
 
     public void calculateGPA(String studentName){
         this.studentName = studentName;
 
-        GPA = Integer.parseInt(creditMap.get(studentName).toString()) * Double.parseDouble(gradeMap.get(studentName).toString());
+        if (gpaMap.isEmpty()){
+
+        }
+        else{
+            GPA = Integer.parseInt(creditMap.get(studentName).toString()) * Double.parseDouble(gradeMap.get(studentName).toString());
+        }
+
         if(gpaMap.containsKey(studentName)){
             gpaMap.remove(studentName);
         }
